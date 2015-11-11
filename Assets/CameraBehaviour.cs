@@ -8,11 +8,16 @@ public class CameraBehaviour : MonoBehaviour
     /// <summary>
     /// The default camera
     /// </summary>
-    public Camera DefaultCamera, TppCamera,  FppCamera;
+    private Camera MainCamera;
+    private Camera TppCamera;
+    private Camera FppCamera;
+
     /// <summary>
     /// The default camera key
     /// </summary>
-    private const string DefaultCameraKey = "f1", TppCameraKey = "f2",  FppCameraKey = "f3";
+    private const string DefaultCameraKey = "f1";
+    private const string FppCameraKey = "f2";
+    private const string TppCameraKey = "f3";
 
     // Use this for initialization
     /// <summary>
@@ -20,7 +25,10 @@ public class CameraBehaviour : MonoBehaviour
     /// </summary>
     void Start () 
 	{
-	}
+        MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        FppCamera = GameObject.Find("FppCamera").GetComponent<Camera>();
+        TppCamera = GameObject.Find("TppCamera").GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     /// <summary>
@@ -31,7 +39,6 @@ public class CameraBehaviour : MonoBehaviour
 		if (Input.GetKeyDown(DefaultCameraKey)) 
 		{
 			SetDefaultCamera();
-			Debug.Log("f1 down");
 		}
 		
 		if (Input.GetKeyDown(TppCameraKey)) 
@@ -50,8 +57,10 @@ public class CameraBehaviour : MonoBehaviour
     /// </summary>
     private void SetDefaultCamera() 
 	{
-		DefaultCamera.enabled = true;
-		TppCamera.enabled = FppCamera.enabled = false;
+		MainCamera.enabled = true;
+
+        FppCamera.enabled = false;
+        TppCamera.enabled = false;
 	}
 
     /// <summary>
@@ -60,7 +69,9 @@ public class CameraBehaviour : MonoBehaviour
     private void SetTppCamera() 
 	{
 		TppCamera.enabled = true;
-		DefaultCamera.enabled = FppCamera.enabled = false;
+
+        MainCamera.enabled = false;
+        FppCamera.enabled = false;
 	}
 
     /// <summary>
@@ -69,6 +80,8 @@ public class CameraBehaviour : MonoBehaviour
     private void SetFppCamera() 
 	{
 		FppCamera.enabled = true;
-		TppCamera.enabled = DefaultCamera.enabled = false;
+
+        MainCamera.enabled = false;
+        TppCamera.enabled = false;
 	}
 }
