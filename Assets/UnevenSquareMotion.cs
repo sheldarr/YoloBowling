@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// CreatedBy: Kewin Polok
 /// Created: 10/11/2015
+/// CreatedBy: Kewin Polok
 /// LastModified: 11/11/2015
 /// LastModifiedBy: Kewin Polok
-/// Description: Simple script which constantly moves object in square path with constant speed.
+/// Description: Simple script which constantly moves object in square path with non constant speed based on sin function.
 /// </summary>
-public class UniformSquareMotion : MonoBehaviour
+public class UnevenSquareMotion : MonoBehaviour
 {
-    /// <summary>
-    /// The minimum speed
-    /// </summary>
-    private const float MinSpeed = 1;
     /// <summary>
     /// The maximum speed
     /// </summary>
@@ -31,7 +27,7 @@ public class UniformSquareMotion : MonoBehaviour
     /// </summary>
     private float _timeToChangeDirection;
     /// <summary>
-    /// The actual speed
+    /// The current speed
     /// </summary>
     private float _speed;
 
@@ -42,7 +38,7 @@ public class UniformSquareMotion : MonoBehaviour
     {
         _currentDirection = new Vector3 { x = Random.value, y = 0, z = Random.value }.normalized;
         _timeToChangeDirection = DefaultTimeToChangeDirection;
-        _speed = Random.Range(MinSpeed, MaxSpeed);
+        _speed = 0;
     }
 
     /// <summary>
@@ -51,6 +47,7 @@ public class UniformSquareMotion : MonoBehaviour
     void Update()
     {
         transform.Translate(_currentDirection * Time.deltaTime * _speed);
+        _speed = Mathf.Abs(Mathf.Sin(Time.time) * MaxSpeed);
         _timeToChangeDirection -= Time.deltaTime;
 
         if (_timeToChangeDirection < 0)
@@ -61,7 +58,7 @@ public class UniformSquareMotion : MonoBehaviour
     }
 
     /// <summary>
-    /// Rotates the current direction by 90 degrees.
+    /// Rotates the direction by 90 degrees
     /// </summary>
     private void RotateBy90Degrees()
     {

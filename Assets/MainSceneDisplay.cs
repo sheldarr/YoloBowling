@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-/// <summary>
-/// Changes the look of the main scene - f.e. sets its default color and allows to set a random color.
+/// Created: 15/10/2015
+/// CreatedBy: Rafał Ostrowski
+/// LastModified: 29/10/2015
+/// LastModifiedBy: Rafał Ostrowski
+/// Description: Changes the look of the main scene - f.e. sets its default color and allows to set a random color.
 /// Interacts with player's mouse and keyboard.
-/// Keys:
-/// k - allows to randomize floor's color
-/// Mouse buttons:
-/// right key - allows to randomize floor's color
+/// Keys: k - allows to randomize floor's color
+/// Mouse buttons: right button - allows to randomize floor's color
 /// </summary>
 public class MainSceneDisplay : MonoBehaviour
 {

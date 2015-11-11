@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// 
+/// Created: 29/10/2015
+/// CreatedBy: Rafał Ostrowski
+/// LastModified: 29/10/2015
+/// LastModifiedBy: Rafał Ostrowski
+/// Description: Script for switching the view between cameras
+/// Keys: F1 - Main camera, F2 - TPP Camera, F3- FPP Camera
 /// </summary>
 public class CameraBehaviour : MonoBehaviour 
 {
@@ -9,19 +13,30 @@ public class CameraBehaviour : MonoBehaviour
     /// The default camera
     /// </summary>
     private Camera MainCamera;
+    /// <summary>
+    /// The TPP camera
+    /// </summary>
     private Camera TppCamera;
+    /// <summary>
+    /// The FPP camera
+    /// </summary>
     private Camera FppCamera;
 
     /// <summary>
     /// The default camera key
     /// </summary>
     private const string DefaultCameraKey = "f1";
+    /// <summary>
+    /// The FPP camera key
+    /// </summary>
     private const string FppCameraKey = "f2";
+    /// <summary>
+    /// The TPP camera key
+    /// </summary>
     private const string TppCameraKey = "f3";
 
-    // Use this for initialization
     /// <summary>
-    /// Starts this instance.
+    /// Initialization
     /// </summary>
     void Start () 
 	{
@@ -30,9 +45,8 @@ public class CameraBehaviour : MonoBehaviour
         TppCamera = GameObject.Find("TppCamera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     /// <summary>
-    /// Updates this instance.
+    /// Updates is called once per frame
     /// </summary>
     void Update () 
 	{
