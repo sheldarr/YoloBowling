@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// CreatedBy: Kewin Polok
 /// Created: 10/11/2015
+/// CreatedBy: Kewin Polok
 /// LastModified: 11/11/2015
 /// LastModifiedBy: Kewin Polok
 /// Description: Simple script which constantly moves object in square path with constant speed.
