@@ -11,18 +11,33 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class MainSceneDisplay : MonoBehaviour
 {
+    /// <summary>
+    /// The mouse right key
+    /// </summary>
     private const int MouseRightKey = 1;
+    /// <summary>
+    /// The change color key
+    /// </summary>
     private const string ChangeColorKey = "k";
+    /// <summary>
+    /// The _default color
+    /// </summary>
     private readonly Color _defaultColor = Color.black;
 
 
     // Use this for initialization
+    /// <summary>
+    /// Starts this instance.
+    /// </summary>
     private void Start()
     {
         gameObject.GetComponent<Renderer>().material.color = _defaultColor;
     }
 
     // Update is called once per frame
+    /// <summary>
+    /// Updates this instance.
+    /// </summary>
     private void Update()
     {
         if (RightMouseWasClicked() || ChangeColorKeyWasPressed())
@@ -34,7 +49,9 @@ public class MainSceneDisplay : MonoBehaviour
     /// <summary>
     /// Detects if mouse's right button was clicked.
     /// </summary>
-    /// <returns>True if the right key was pressed.</returns>
+    /// <returns>
+    /// True if the right key was pressed.
+    /// </returns>
     private bool RightMouseWasClicked()
     {
         return Input.GetMouseButtonDown(MouseRightKey);
@@ -43,7 +60,9 @@ public class MainSceneDisplay : MonoBehaviour
     /// <summary>
     /// Detects if key that is responsible for changing the color was pressed on a keyboard.
     /// </summary>
-    /// <returns>True if the key responsible was changing color was pressed.</returns>
+    /// <returns>
+    /// True if the key responsible was changing color was pressed.
+    /// </returns>
     private bool ChangeColorKeyWasPressed()
     {
         return Input.GetKeyUp(ChangeColorKey);
