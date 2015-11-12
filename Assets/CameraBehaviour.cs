@@ -12,15 +12,15 @@ public class CameraBehaviour : MonoBehaviour
     /// <summary>
     /// The default camera
     /// </summary>
-    private Camera MainCamera;
+    public Camera MainCamera;
     /// <summary>
     /// The TPP camera
     /// </summary>
-    private Camera TppCamera;
+    public Camera TppCamera;
     /// <summary>
     /// The FPP camera
     /// </summary>
-    private Camera FppCamera;
+    public Camera FppCamera;
 
     /// <summary>
     /// The default camera key
@@ -40,9 +40,7 @@ public class CameraBehaviour : MonoBehaviour
     /// </summary>
     void Start () 
 	{
-        MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        FppCamera = GameObject.Find("FppCamera").GetComponent<Camera>();
-        TppCamera = GameObject.Find("TppCamera").GetComponent<Camera>();
+
     }
 
     /// <summary>
