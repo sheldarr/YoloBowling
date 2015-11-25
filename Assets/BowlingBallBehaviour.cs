@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
 /// Created: 15/10/2015
 /// CreatedBy: Rafał Ostrowski
 /// LastModified: 29/10/2015
