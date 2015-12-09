@@ -63,7 +63,7 @@ public class BowlingBallBehaviour : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _objectStartPosition = GameObject.Find("Sphere").transform.position;
+        _objectStartPosition = GameObject.Find("BowlingBall").transform.position;
     }
 
     /// <summary>
