@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Created: 15/10/2015
 /// CreatedBy: Rafał Ostrowski
-/// LastModified: 29/10/2015
-/// LastModifiedBy: Rafał Ostrowski
+/// LastModified: 09/12/2015
+/// LastModifiedBy: Kewin Polok
 /// Description: Script responsible for bowling ball's behaviour, e.g. its movement.
 /// Keys: r - reset ball's position, w - move ball forward
 /// Mouse buttons: left button pressed and released - logs time for how long it was pressed.
@@ -13,57 +12,23 @@ using UnityEngine;
 public class BowlingBallBehaviour : MonoBehaviour
 {
     /// <summary>
-    /// The mouse left key
-    /// </summary>
-    private const int MouseLeftKey = 0;
-
-    /// <summary>
-    /// The forward key
-    /// </summary>
-    private const string ForwardKey = "w";
-
-    /// <summary>
-    /// The reset ball position key
-    /// </summary>
-    private const string ResetBallPositionKey = "r";
-
-    /// <summary>
     /// The ball speed
     /// </summary>
-    private const float BallSpeed = 5.0f;
+    private const float ForwardTorque = 10.0f;
 
-    /// <summary>
-    /// The mouse clicked time
-    /// </summary>
-    private int _mouseClickedTime;
+    private const float SideForce = 4.0f;
 
     /// <summary>
     /// The object start position
     /// </summary>
-    private Vector3 _objectStartPosition;
-
-    /// <summary>
-    /// Gets or sets a value indicating whether forward button is pressed.
-    /// </summary>
-    /// <value>
-    /// <c>true</c> if forward button pressed; otherwise, <c>false</c>.
-    /// </value>
-    public bool IsForwardPressed { get; set; }
-
-    /// <summary>
-    /// Gets or sets the mouse click time in miliseconds.
-    /// </summary>
-    /// <value>
-    /// The mouse click time in miliseconds.
-    /// </value>
-    public int MouseClickTimeInMiliseconds { get; set; }
+    private Vector3 _startPosition;
 
     /// <summary>
     /// Initialization
     /// </summary>
     private void Start()
     {
-        _objectStartPosition = GameObject.Find("BowlingBall").transform.position;
+        _startPosition = gameObject.transform.position;
     }
 
     /// <summary>
@@ -71,85 +36,34 @@ public class BowlingBallBehaviour : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(ForwardKey))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            IsForwardPressed = true;
+            gameObject.GetComponent<Rigidbody>().AddTorque(-transform.right * ForwardTorque);
         }
 
-        if (Input.GetKeyUp(ForwardKey))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            IsForwardPressed = false;
+            gameObject.GetComponent<Rigidbody>().AddForce(transform.right * SideForce);
         }
 
-        if (Input.GetKeyDown(ResetBallPositionKey))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            ResetBallPosition();
+            gameObject.GetComponent<Rigidbody>().AddForce(-transform.right * SideForce);
         }
 
-        if (IsForwardPressed)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.Translate(Vector3.back * Time.deltaTime * BallSpeed);
-        }
-
-        if (LeftMouseWasClicked())
-        {
-            StartCountingHowLongMouseIsPressed();
-        }
-
-        if (LeftMouseWasReleased())
-        {
-            StopCountingHowLongMouseIsPressed();
-            LogForHowLongMouseWasPressed();
+            ResetBallState();
         }
     }
 
     /// <summary>
     /// Resets the ball position.
     /// </summary>
-    private void ResetBallPosition()
+    private void ResetBallState()
     {
-        GameObject.Find("Sphere").transform.position = _objectStartPosition;
-    }
-
-    /// <summary>
-    /// Starts the counting how long mouse is pressed.
-    /// </summary>
-    private void StartCountingHowLongMouseIsPressed()
-    {
-        MouseClickTimeInMiliseconds = 0;
-        _mouseClickedTime = Environment.TickCount;
-    }
-
-    /// <summary>
-    /// Stops the counting how long mouse is pressed.
-    /// </summary>
-    private void StopCountingHowLongMouseIsPressed()
-    {
-        int mouseReleaseTime = Environment.TickCount;
-        MouseClickTimeInMiliseconds = mouseReleaseTime - _mouseClickedTime;
-    }
-
-    /// <summary>
-    /// Just temporarily, to show that it was measured properly.
-    /// </summary>
-    private void LogForHowLongMouseWasPressed()
-    {
-        Debug.Log(string.Format("Left mouse button was pressed for: {0} ms", MouseClickTimeInMiliseconds));
-    }
-
-    /// <summary>
-    /// Checks if left mouse button was clicked.
-    /// </summary>
-    private bool LeftMouseWasClicked()
-    {
-        return Input.GetMouseButtonDown(MouseLeftKey);
-    }
-
-    /// <summary>
-    /// Checks if left mouse button was released.
-    /// </summary>
-    private bool LeftMouseWasReleased()
-    {
-        return Input.GetMouseButtonUp(MouseLeftKey);
+        gameObject.transform.position = _startPosition;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 }
