@@ -36,14 +36,6 @@ public class CameraBehaviour : MonoBehaviour
     private const string TppCameraKey = "f3";
 
     /// <summary>
-    /// Initialization
-    /// </summary>
-    void Start () 
-	{
-
-    }
-
-    /// <summary>
     /// Updates is called once per frame
     /// </summary>
     void Update () 

@@ -33,7 +33,6 @@ public class PinRespawning : MonoBehaviour
     {
         var currentObjectColor = gameObject.GetComponent<Renderer>().material.color;
 
-
         var newPin = Instantiate(Resources.Load(gameObject.name)) as GameObject;
         if (newPin != null)
         {

@@ -99,7 +99,7 @@ public class BowlingBallBehaviour : MonoBehaviour
 
         if (AfterburnerPower <= 0.25*MaxAfterBurnerPower)
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().material.color = Color.cyan;
         }
     }
 
@@ -123,7 +123,7 @@ public class BowlingBallBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets the ball position.
+    /// Resets the ball state.
     /// </summary>
     private void ResetBallState()
     {
