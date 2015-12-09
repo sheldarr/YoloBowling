@@ -31,12 +31,17 @@ public class PinRespawning : MonoBehaviour
 
     private void RespawnPin()
     {
-        var currentObjectColor = gameObject.GetComponent<Renderer>().material.color;
+        var oldPinColour = gameObject.GetComponent<Renderer>().material.color;
+        var oldPinName = gameObject.name;
 
         var newPin = Instantiate(Resources.Load(gameObject.name)) as GameObject;
-        if (newPin != null)
+
+        if (newPin == null)
         {
-            newPin.GetComponent<Renderer>().material.color = currentObjectColor;
+            return;
         }
+
+        newPin.GetComponent<Renderer>().material.color = oldPinColour;
+        newPin.name = oldPinName;
     }
 }
