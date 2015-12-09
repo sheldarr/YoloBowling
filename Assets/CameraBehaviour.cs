@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-/// Created: 29/10/2015
+/// <summary>
+/// Created: 15/10/2015
 /// CreatedBy: Rafał Ostrowski
-/// LastModified: 12/09/2015
+/// LastModified: 09/12/2015
 /// LastModifiedBy: Kewin Polok
-/// Description: Script for switching the view between cameras
-/// Keys: F1 - Main camera, F2 - TPP Camera, F3- FPP Camera
+/// Description: Handles the controls for camera changing
 /// </summary>
 public class CameraBehaviour : MonoBehaviour 
 {
@@ -13,15 +13,20 @@ public class CameraBehaviour : MonoBehaviour
     /// The default camera
     /// </summary>
     public Camera MainCamera;
+
     /// <summary>
     /// The TPP camera
     /// </summary>
     public Camera TppCamera;
+
     /// <summary>
     /// The FPP camera
     /// </summary>
     public Camera FppCamera;
 
+    /// <summary>
+    /// The dart camera
+    /// </summary>
     public Camera DartCamera;
 
     /// <summary>
@@ -86,6 +91,9 @@ public class CameraBehaviour : MonoBehaviour
         DartCamera.enabled = false;
     }
 
+    /// <summary>
+    /// Sets the dart camera.
+    /// </summary>
     private void SetDartCamera()
     {
         DartCamera.enabled = true;

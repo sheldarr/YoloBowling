@@ -6,8 +6,6 @@
 /// LastModified: 09/12/2015
 /// LastModifiedBy: Kewin Polok
 /// Description: Script responsible for bowling ball's behaviour, e.g. its movement.
-/// Keys: r - reset ball's position, w - move ball forward
-/// Mouse buttons: left button pressed and released - logs time for how long it was pressed.
 /// </summary>
 public class BowlingBallBehaviour : MonoBehaviour
 {
@@ -16,17 +14,32 @@ public class BowlingBallBehaviour : MonoBehaviour
     /// </summary>
     private const float ForwardTorque = 10.0f;
 
+    /// <summary>
+    /// The side force
+    /// </summary>
     private const float SideForce = 4.0f;
 
+    /// <summary>
+    /// The maximum afterburner power
+    /// </summary>
     private const float MaxAfterBurnerPower = 10;
 
+    /// <summary>
+    /// Gets or sets the afterburner power.
+    /// </summary>
+    /// <value>
+    /// The afterburner power.
+    /// </value>
     private float AfterburnerPower { get; set; }
 
     /// <summary>
-    /// The object start position
+    /// The start position
     /// </summary>
     private Vector3 _startPosition;
 
+    /// <summary>
+    /// The start rotation
+    /// </summary>
     private Quaternion _startRotation;
 
     /// <summary>
@@ -57,6 +70,9 @@ public class BowlingBallBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the moving controls.
+    /// </summary>
     private void HandleMovingControls()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -80,6 +96,9 @@ public class BowlingBallBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the afterburner colors.
+    /// </summary>
     private void HandleAfterburnerColors()
     {
         if (AfterburnerPower <= MaxAfterBurnerPower)
@@ -103,6 +122,9 @@ public class BowlingBallBehaviour : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles the afterburner controls.
+    /// </summary>
     private void HandleAfterburnerControls()
     {
         if (!Input.GetKey(KeyCode.LeftControl))

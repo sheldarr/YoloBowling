@@ -5,7 +5,7 @@
 /// CreatedBy: Kewin Polok
 /// LastModified: 09/12/2015
 /// LastModifiedBy: Kewin Polok
-/// Description: Game initialization script. At this moment it only sets different material color for pins with different motion.
+/// Description: Game initialization script.
 /// </summary>
 public class GameInit : MonoBehaviour
 {

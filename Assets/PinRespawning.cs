@@ -29,6 +29,9 @@ public class PinRespawning : MonoBehaviour
         DestroyObject(gameObject);
     }
 
+    /// <summary>
+    /// Respawns the pin.
+    /// </summary>
     private void RespawnPin()
     {
         var oldPinColour = gameObject.GetComponent<Renderer>().material.color;
