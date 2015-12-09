@@ -2,8 +2,8 @@
 
 /// Created: 29/10/2015
 /// CreatedBy: Rafał Ostrowski
-/// LastModified: 29/10/2015
-/// LastModifiedBy: Rafał Ostrowski
+/// LastModified: 12/09/2015
+/// LastModifiedBy: Kewin Polok
 /// Description: Script for switching the view between cameras
 /// Keys: F1 - Main camera, F2 - TPP Camera, F3- FPP Camera
 /// </summary>
@@ -22,50 +22,45 @@ public class CameraBehaviour : MonoBehaviour
     /// </summary>
     public Camera FppCamera;
 
-    /// <summary>
-    /// The default camera key
-    /// </summary>
-    private const string DefaultCameraKey = "f1";
-    /// <summary>
-    /// The FPP camera key
-    /// </summary>
-    private const string FppCameraKey = "f2";
-    /// <summary>
-    /// The TPP camera key
-    /// </summary>
-    private const string TppCameraKey = "f3";
+    public Camera DartCamera;
 
     /// <summary>
     /// Updates is called once per frame
     /// </summary>
     void Update () 
 	{
-		if (Input.GetKeyDown(DefaultCameraKey)) 
+		if (Input.GetKeyDown(KeyCode.F1)) 
 		{
-			SetDefaultCamera();
+			SetMainCamera();
 		}
 		
-		if (Input.GetKeyDown(TppCameraKey)) 
+		if (Input.GetKeyDown(KeyCode.F2)) 
 		{
 			SetTppCamera();
 		}
 		
-		if (Input.GetKeyDown(FppCameraKey))
+		if (Input.GetKeyDown(KeyCode.F3))
 		{
 			SetFppCamera();
 		}
-	}
+
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            SetDartCamera();
+        }
+    }
 
     /// <summary>
-    /// Sets the default camera.
+    /// Sets the main camera.
     /// </summary>
-    private void SetDefaultCamera() 
+    private void SetMainCamera() 
 	{
 		MainCamera.enabled = true;
 
         FppCamera.enabled = false;
         TppCamera.enabled = false;
-	}
+        DartCamera.enabled = false;
+    }
 
     /// <summary>
     /// Sets the TPP camera.
@@ -76,7 +71,8 @@ public class CameraBehaviour : MonoBehaviour
 
         MainCamera.enabled = false;
         FppCamera.enabled = false;
-	}
+        DartCamera.enabled = false;
+    }
 
     /// <summary>
     /// Sets the FPP camera.
@@ -87,5 +83,15 @@ public class CameraBehaviour : MonoBehaviour
 
         MainCamera.enabled = false;
         TppCamera.enabled = false;
-	}
+        DartCamera.enabled = false;
+    }
+
+    private void SetDartCamera()
+    {
+        DartCamera.enabled = true;
+
+        MainCamera.enabled = false;
+        TppCamera.enabled = false;
+        FppCamera.enabled = false;
+    }
 }

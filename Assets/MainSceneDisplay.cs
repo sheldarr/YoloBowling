@@ -19,7 +19,7 @@ public class MainSceneDisplay : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             ChangeSceneColorToRandom();
         }
