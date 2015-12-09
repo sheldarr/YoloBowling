@@ -1,3 +1,3 @@
 # YoloBowling
 
-Unity bowling implementation for university laboratories
+Simple bowling game in unity for university
