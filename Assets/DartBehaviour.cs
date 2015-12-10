@@ -19,7 +19,7 @@ public class DartBehaviour : MonoBehaviour {
 	        return;
 	    }
 
-	    gameObject.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 250);
+	    gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0.25f, -0.5f) * 100);
         gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
 }
