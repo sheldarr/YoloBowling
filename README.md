@@ -1,3 +1,3 @@
-# YoloBowling
+# Yolo Bowling
 
-Simple bowling game in unity for university
+Simple bowling game made in unity
